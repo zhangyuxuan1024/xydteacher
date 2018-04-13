@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/fragment_view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#eeeeee" />
+
+    <ImageView
+        android:id="@+id/fragment_test_title_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:background="@color/white"
+        android:scaleType="fitStart" />
+
+    <TextView
+        android:id="@+id/fragment_test_leidt_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:background="@color/white"
+        android:drawablePadding="7dp"
+        android:drawableTop="@mipmap/bt_leidatu"
+        android:gravity="center_horizontal"
+        android:paddingTop="7dp"
+        android:text="点击查看"
+        android:textColor="#bbbbbb"
+        android:textSize="11sp" />
+
+    <net.iclassmate.teacherspace.view.FullListView
+        android:id="@+id/fragment_ListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:background="@color/white"
+        android:paddingTop="14dp" />
+</LinearLayout>

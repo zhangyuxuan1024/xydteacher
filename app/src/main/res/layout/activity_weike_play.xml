@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="net.iclassmate.teacherspace.ui.activity.weike.WeikePlayActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <net.iclassmate.teacherspace.view.weike.ZoomPicView
+            android:id="@+id/play_zoom_pic_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/play_show_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#0FFF" />
+
+        <ImageView
+            android:id="@+id/weike_play_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ff21ccbc"
+            android:src="@mipmap/ic_shipin" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/video_first"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/video_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_bofang" />
+    </FrameLayout>
+</LinearLayout>

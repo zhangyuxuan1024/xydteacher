@@ -1,0 +1,107 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <net.iclassmate.teacherspace.view.TitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height">
+
+        </net.iclassmate.teacherspace.view.TitleBar>
+
+        <net.iclassmate.teacherspace.view.MyViewPager
+            android:id="@+id/main_ViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dddddd"
+            android:contentDescription="@string/app_name">
+
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/main_iv_notice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:paddingBottom="5dp"
+                android:paddingTop="10dp"
+                android:src="@drawable/main_notice_imge_selector" />
+
+
+            <ImageView
+                android:id="@+id/main_iv_exam"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:paddingBottom="5dp"
+                android:paddingTop="10dp"
+                android:src="@drawable/main_exam_image_selector" />
+
+
+            <ImageView
+                android:id="@+id/main_iv_owner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:paddingBottom="5dp"
+                android:paddingTop="10dp"
+                android:src="@drawable/main_owner_image_selector" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom"
+        android:background="#00000000"
+        android:orientation="horizontal">
+
+        <!-- 显示提醒信息的button android:layout_weight=1  是3个butto，平分手机界面的宽度 -->
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000" />
+        <!-- 占位置的button，以便适应不同分辨率手机 -->
+
+        <View
+            android:id="@+id/bt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000" />
+        <!-- 占位置的button，以便适应不同分辨率手机 -->
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+
+</FrameLayout>

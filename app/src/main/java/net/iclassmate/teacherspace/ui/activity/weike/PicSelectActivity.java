@@ -1,0 +1,367 @@
+package net.iclassmate.teacherspace.ui.activity.weike;
+
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.provider.MediaStore;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import net.iclassmate.teacherspace.R;
+import net.iclassmate.teacherspace.adapter.weike.PicSelectAdapter;
+import net.iclassmate.teacherspace.bean.weike.ImageState;
+import net.iclassmate.teacherspace.constant.Constants;
+import net.iclassmate.teacherspace.view.TitleBar;
+import net.iclassmate.teacherspace.view.loading.LoadingHelper;
+import net.iclassmate.teacherspace.view.loading.LoadingListener;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PicSelectActivity extends FragmentActivity implements TitleBar.TitleOnClickListener,
+        AdapterView.OnItemClickListener, LoadingListener, View.OnClickListener {
+    private TitleBar titleBar;
+    private TextView tv_pic_select;
+    private GridView gridView;
+
+    private List<ImageState> mPicList;
+    private List<String> listSelect;
+    private PicSelectAdapter mAdapter;
+    private int selectCount;
+    private LoadingHelper loadingHelper;
+    private String camera_photo_name;
+    private int cur_click;
+
+    public static final int RESULT_CAMERA = 1;
+    private Handler mHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            loadingHelper.HideLoading(View.INVISIBLE);
+            data2View();
+            setCheckImage();
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_pic_select);
+
+        initView();
+        getImage();
+    }
+
+    private void setCheckImage() {
+        Intent intent = getIntent();
+        if (intent == null) return;
+        boolean flag = intent.getBooleanExtra("flag", false);
+        if (!flag) return;
+        listSelect = intent.getStringArrayListExtra("list");
+        if (listSelect == null) return;
+        for (int i = 0; i < listSelect.size(); i++) {
+            for (int j = 0; j < mPicList.size(); j++) {
+                ImageState state = mPicList.get(j);
+                String url = state.path;
+                if (url.equals(listSelect.get(i))) {
+                    state.check = true;
+                    mPicList.set(j, state);
+                    break;
+                }
+            }
+        }
+        mAdapter.notifyDataSetChanged();
+        setSelectPic();
+    }
+
+    private void initView() {
+        titleBar = (TitleBar) findViewById(R.id.pic_title_bar);
+        titleBar.setLeftIcon(R.drawable.fragment_back);
+        titleBar.setTitleClickListener(this);
+        titleBar.setTitle("选择图片");
+        tv_pic_select = (TextView) findViewById(R.id.weike_tv_check_img);
+        tv_pic_select.setOnClickListener(this);
+        gridView = (GridView) findViewById(R.id.gridview_img_show);
+        gridView.setOnItemClickListener(this);
+
+        selectCount = 0;
+        mPicList = new ArrayList<>();
+        listSelect = new ArrayList<String>();
+        setSelectPic();
+        mAdapter = new PicSelectAdapter(this, mPicList);
+        gridView.setAdapter(mAdapter);
+
+        loadingHelper = new LoadingHelper(
+                findViewById(R.id.loading_prompt_relative),
+                findViewById(R.id.loading_empty_prompt_linear));
+        loadingHelper.ShowLoading();
+        loadingHelper.SetListener(this);
+
+        cur_click = -1;
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id) {
+            case R.id.weike_tv_check_img:
+                Intent intent = new Intent(PicSelectActivity.this, PrepareActivity.class);
+                intent.putStringArrayListExtra("list", (ArrayList<String>) listSelect);
+                startActivity(intent);
+                this.finish();
+                break;
+        }
+    }
+
+    /**
+     * 为View绑定数据
+     */
+    private void data2View() {
+        if (mPicList == null || mPicList.size() < 1) {
+            Toast.makeText(getApplicationContext(), "没有扫描到图片",
+                    Toast.LENGTH_SHORT).show();
+        }
+        mAdapter.notifyDataSetChanged();
+
+        mAdapter.setImgClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PicSelectActivity.this, LookPicActivity.class);
+                String path = (String) view.getTag();
+                for (int i = 0; i < mPicList.size(); i++) {
+                    if (mPicList.get(i).path.equals(path)) {
+                        cur_click = i;
+                        intent.putExtra("url", path);
+                        startActivity(intent);
+                        break;
+                    }
+                }
+            }
+        });
+
+        mAdapter.setImgCkeckClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PicSelectAdapter.ViewPicHolder holder = (PicSelectAdapter.ViewPicHolder) view.getTag();
+                String path = holder.path;
+                for (int i = 0; i < mPicList.size(); i++) {
+                    if (mPicList.get(i).path.equals(path)) {
+                        int n = i;
+                        ImageState state = mPicList.get(n);
+                        state.check = !state.check;
+                        mAdapter.notifyDataSetChanged();
+                        setSelectPic();
+                        break;
+                    }
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        SharedPreferences preferences = getSharedPreferences(Constants.SHARED_WEIKE, MODE_PRIVATE);
+        boolean isCkeck = preferences.getBoolean("pic_isckeck", false);
+        if (cur_click > -1 && isCkeck) {
+            mPicList.get(cur_click).check = true;
+            mAdapter.notifyDataSetChanged();
+            setSelectPic();
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+        if (i == 0) {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            String path = Environment.getExternalStorageDirectory() + "/" + Constants.APP_CACHE_NAME;
+            File f = new File(path);
+            if (!f.exists()) {
+                f.mkdirs();
+            }
+            camera_photo_name = System.currentTimeMillis() + ".jpg";
+            File file = new File(path, camera_photo_name);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+            startActivityForResult(intent, RESULT_CAMERA);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == RESULT_CAMERA) {
+            String sdStatus = Environment.getExternalStorageState();
+            if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
+                Log.i("info", "SD card is not avaiable writeable right now.");
+                return;
+            }
+
+            FileOutputStream b = null;
+            String path = Environment.getExternalStorageDirectory() + "/" + Constants.APP_CACHE_NAME;
+            File file = new File(path);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+
+            String filename = path + "/" + camera_photo_name;
+            Bitmap bitmap = compressImageFromFile(filename);
+            try {
+                b = new FileOutputStream(filename);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 60, b);
+            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filename))));
+            try {
+                b.flush();
+                b.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ImageState state = new ImageState();
+            state.path = filename;
+            state.check = false;
+            mPicList.add(state);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private Bitmap compressImageFromFile(String srcPath) {
+        BitmapFactory.Options newOpts = new BitmapFactory.Options();
+        newOpts.inJustDecodeBounds = false;
+        Bitmap bitmap = BitmapFactory.decodeFile(srcPath, null);
+
+        newOpts.inJustDecodeBounds = false;
+        int w = newOpts.outWidth;
+        int h = newOpts.outHeight;
+        float hh = 800f;
+        float ww = 480f;
+        int be = 1;
+        if (w > h && w > ww) {
+            be = (int) (newOpts.outWidth / ww);
+        } else if (w < h && h > hh) {
+            be = (int) (newOpts.outHeight / hh);
+        }
+        if (be <= 0)
+            be = 1;
+        newOpts.inSampleSize = be;
+
+        newOpts.inPurgeable = true;
+        newOpts.inInputShareable = true;
+
+        bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
+        return bitmap;
+    }
+
+    public void getImage() {
+        if (!Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED)) {
+            Toast.makeText(this, "暂无外部存储", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String firstImage = null;
+                Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                ContentResolver mContentResolver = PicSelectActivity.this.getContentResolver();
+                Cursor mCursor = mContentResolver.query(mImageUri, null,
+                        MediaStore.Images.Media.MIME_TYPE + "=? or "
+                                + MediaStore.Images.Media.MIME_TYPE + "=?",
+                        new String[]{"image/jpeg", "image/png"},
+                        MediaStore.Images.Media.DATE_MODIFIED);
+
+                mPicList.clear();
+                while (mCursor.moveToNext()) {
+                    // 获取图片的路径
+                    String path = mCursor.getString(mCursor
+                            .getColumnIndex(MediaStore.Images.Media.DATA));
+
+                    ImageState state = new ImageState();
+                    state.path = path;
+                    state.check = false;
+                    mPicList.add(state);
+                }
+                for (int i = 0; i < listSelect.size(); i++) {
+                    String url_1 = listSelect.get(i);
+                    for (int j = 0; j < mPicList.size(); j++) {
+                        String url_2 = mPicList.get(j).path;
+                        if (url_1.equals(url_2)) {
+                            mPicList.get(j).check = true;
+                        }
+                    }
+                }
+                mCursor.close();
+                mHandler.sendEmptyMessage(0x110);
+            }
+        }).start();
+    }
+
+    private void setSelectPic() {
+        selectCount = 0;
+        listSelect.clear();
+        for (int j = 0; j < mPicList.size(); j++) {
+            if (mPicList.get(j).check == true) {
+                selectCount++;
+                listSelect.add(mPicList.get(j).path);
+            }
+        }
+
+        if (selectCount > 0) {
+            tv_pic_select.setText("完成（" + selectCount + "）");
+            tv_pic_select.setTextColor(Color.parseColor("#1698ff"));
+        } else {
+            tv_pic_select.setText("完成");
+            tv_pic_select.setTextColor(Color.parseColor("#555555"));
+        }
+    }
+
+    @Override
+    public void leftClick() {
+        toActivity();
+    }
+
+    @Override
+    public void onBackPressed() {
+        toActivity();
+    }
+
+    private void toActivity() {
+        Intent intent = new Intent(this, WeiKeActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    @Override
+    public void rightClick() {
+
+    }
+
+    @Override
+    public void titleClick() {
+
+    }
+
+    @Override
+    public void OnRetryClick() {
+
+    }
+}

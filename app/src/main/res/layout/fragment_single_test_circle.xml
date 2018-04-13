@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eeeeee"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#eeeeee" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:background="@color/white"
+        android:scaleType="fitStart"
+        android:src="@mipmap/img_shitinandu" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:background="@color/white"
+        android:gravity="right|center_vertical"
+        android:paddingRight="18dp"
+        android:paddingTop="10dp"
+        android:text=" ※难度系数P=平均分/满分"
+        android:textColor="#bbbbbb"
+        android:textSize="11sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:background="@color/white"
+        android:gravity="right|center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingRight="18dp"
+        android:text="@string/fragment_test_stnd"
+        android:textColor="#bbbbbb"
+        android:textSize="11sp" />
+
+    <LinearLayout
+        android:id="@+id/fragment_single_test_circle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="8dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <net.iclassmate.teacherspace.view.CircleView
+            android:id="@+id/fragment_single_circleview1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:circleColor="#ee6e7c"
+            app:radius="500dp"
+            app:ringColor="#ee6e7c"
+            app:ringColorDefault="@color/white"
+            app:strokeWidth="20dp" />
+
+        <net.iclassmate.teacherspace.view.CircleView
+            android:id="@+id/fragment_single_circleview2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:circleColor="#4fc1e9"
+            app:radius="500dp"
+            app:ringColor="#4fc1e9"
+            app:ringColorDefault="@color/white"
+            app:strokeWidth="20dp" />
+
+        <net.iclassmate.teacherspace.view.CircleView
+            android:id="@+id/fragment_single_circleview3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:circleColor="#a0d468"
+            app:radius="500dp"
+            app:ringColor="#a0d468"
+            app:ringColorDefault="@color/white"
+            app:strokeWidth="20dp" />
+    </LinearLayout>
+</LinearLayout>

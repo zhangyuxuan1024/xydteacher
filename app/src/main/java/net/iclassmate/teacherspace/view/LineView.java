@@ -1,0 +1,252 @@
+package net.iclassmate.teacherspace.view;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+
+import net.iclassmate.teacherspace.R;
+import net.iclassmate.teacherspace.utils.DensityUtil;
+
+/**
+ * Created by xydbj on 2016/3/2.
+ */
+public class LineView extends View {
+    private Paint mPaint; //画笔
+    private int mWidth;
+    private int mHeight;
+
+    private String startString;
+    private String endString;
+    //对话框的宽高
+    private int imgX, imgY;
+    private int imgWidth;
+    //对话框文字的框
+    private int wzX, wzY;
+    //对话框显示的文字
+    private String text;
+
+    //偏移值
+    private int pX, pY;
+    //滑动点的位置
+    private int hX, hY;
+    private int hddWidth;
+
+    public LineView(Context context) {
+        super(context);
+        init(context, null);
+    }
+
+    public LineView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context, attrs);
+    }
+
+    private void init(Context context, AttributeSet attrs) {
+        startString = "10";
+        endString = "50";
+
+        imgX = 0;
+        imgY = 0;
+        wzX = (int) getResources().getDimension(R.dimen.view_2);
+        wzY = (int) getResources().getDimension(R.dimen.view_11);
+        text = "10";
+        pX = 0;
+        pY = 0;
+        mPaint = new Paint();
+        mWidth = DensityUtil.dip2px(context, 220);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        //mWidth = canvas.getWidth();
+        mHeight = (int) getResources().getDimension(R.dimen.view_3);
+        int y = (int) getResources().getDimension(R.dimen.view_24);
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.img_tanchukuang2);
+        imgWidth = bitmap.getWidth();
+        drawImage(canvas);
+
+        mPaint.setColor(getResources().getColor(R.color.xb_line_1));
+        mPaint.setStrokeWidth(mHeight);
+        canvas.drawLine(imgWidth / 2, y, (float) (0.25 * mWidth), y, mPaint);
+        mPaint.setColor(getResources().getColor(R.color.xb_line_2));
+        canvas.drawLine((float) (0.25 * mWidth), y, (float) (0.5 * mWidth), y, mPaint);
+        mPaint.setColor(getResources().getColor(R.color.xb_line_3));
+        canvas.drawLine((float) (0.5 * mWidth), y, (float) (0.75 * mWidth), y, mPaint);
+        mPaint.setColor(getResources().getColor(R.color.xb_line_4));
+        canvas.drawLine((float) (0.75 * mWidth), y, (float) ((1.0 * mWidth) - imgWidth / 2), y, mPaint);
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.bt_huadongdian1);
+        hddWidth = bitmap.getWidth();
+        hX = imgWidth / 2 - hddWidth / 2;
+        hY = (int) (y / 2 + getResources().getDimension(R.dimen.view_5));
+
+        Paint paint = new Paint();
+        paint.setColor(getResources().getColor(R.color.app_color));
+        paint.setTextSize(getResources().getDimension(R.dimen.tv_10));
+        canvas.drawText(getStartString(), imgWidth / 2 - hddWidth / 2, y + imgWidth / 2 + getResources().getDimension(R.dimen.view_2), paint);
+        canvas.drawText(getEndString(), mWidth - imgWidth / 2 - hddWidth / 2, y + imgWidth / 2 + getResources().getDimension(R.dimen.view_2), paint);
+        super.onDraw(canvas);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float x = event.getX();
+        float y = event.getY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                imgX = (int) x;
+                wzX = (int) x;
+                hX = (int) x;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+        }
+        return true;
+    }
+
+    private void drawImage(Canvas canvas) {
+        int x = (mWidth - imgWidth) / 4;
+        if (getImgX() < x / 2) {
+            text = 10 + "";
+            setImgX(0);
+        } else if (getImgX() < x + x / 2) {
+            text = 20 + "";
+            setImgX(x);
+        } else if (getImgX() < 2 * x + x / 2) {
+            text = 30 + "";
+            setImgX(2 * x);
+        } else if (getImgX() < 3 * x + x / 2) {
+            text = 40 + "";
+            setImgX(3 * x);
+        } else {
+            text = 50 + "";
+            setImgX(4 * x);
+        }
+        //画对话框
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.img_tanchukuang2);
+        canvas.drawBitmap(bitmap, getImgX(), getImgY(), mPaint);
+
+        //对话框文字
+        mPaint.setTextSize(getResources().getDimension(R.dimen.tv_10));
+        mPaint.setColor(Color.WHITE);
+
+        canvas.drawText(text, getImgX() + getImgWidth() / 4, getWzY(), mPaint);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.bt_huadongdian1);
+        canvas.drawBitmap(bitmap, getImgX() + getImgWidth() / 4, gethY(), new Paint());
+        invalidate();
+    }
+
+    public String getStartString() {
+        return startString;
+    }
+
+    public void setStartString(String startString) {
+        this.startString = startString;
+    }
+
+    public String getEndString() {
+        return endString;
+    }
+
+    public void setEndString(String endString) {
+        this.endString = endString;
+    }
+
+    public int getImgX() {
+        return imgX;
+    }
+
+    public void setImgX(int imgX) {
+        this.imgX = imgX;
+    }
+
+    public int getImgY() {
+        return imgY;
+    }
+
+    public void setImgY(int imgY) {
+        this.imgY = imgY;
+    }
+
+    public int getWzX() {
+        return wzX;
+    }
+
+    public void setWzX(int wzX) {
+        this.wzX = wzX;
+    }
+
+    public int getWzY() {
+        return wzY;
+    }
+
+    public void setWzY(int wzY) {
+        this.wzY = wzY;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getpX() {
+        return pX;
+    }
+
+    public void setpX(int pX) {
+        this.pX = pX;
+    }
+
+    public int getpY() {
+        return pY;
+    }
+
+    public void setpY(int pY) {
+        this.pY = pY;
+    }
+
+    public int gethX() {
+        return hX;
+    }
+
+    public void sethX(int hX) {
+        this.hX = hX;
+    }
+
+    public int gethY() {
+        return hY;
+    }
+
+    public void sethY(int hY) {
+        this.hY = hY;
+    }
+
+    public int getImgWidth() {
+        return imgWidth;
+    }
+
+    public void setImgWidth(int imgWidth) {
+        this.imgWidth = imgWidth;
+    }
+
+    public int getHddWidth() {
+        return hddWidth;
+    }
+
+    public void setHddWidth(int hddWidth) {
+        this.hddWidth = hddWidth;
+    }
+
+}

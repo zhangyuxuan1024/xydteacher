@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="net.iclassmate.teacherspace.ui.activity.weike.PrepareActivity">
+
+    <net.iclassmate.teacherspace.view.TitleBar
+        android:id="@+id/prepare_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height" />
+
+    <EditText
+        android:id="@+id/weike_video_name"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:hint="点击输入视频标题"
+        android:singleLine="true"
+        android:textColor="#555555"
+        android:textColorHint="#bbbbbb"
+        android:textSize="16sp" />
+
+    <net.iclassmate.teacherspace.view.weike.MyShowGridView
+        android:id="@+id/pic_show_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/white"
+        android:numColumns="3"
+        android:paddingBottom="17dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="20dp"
+        android:scrollbars="none"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="4dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:minHeight="160dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/weike_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/weike_next" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MainActivity">
+
+    <net.iclassmate.teacherspace.view.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height">
+
+    </net.iclassmate.teacherspace.view.TitleBar>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_ViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd"
+        android:contentDescription="@string/app_name">
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/main_iv_notice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/main_notice_imge_selector" />
+
+
+        <ImageView
+            android:id="@+id/main_iv_exam"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/main_exam_image_selector" />
+
+
+        <ImageView
+            android:id="@+id/main_iv_owner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/main_owner_image_selector" />
+    </LinearLayout>
+
+</LinearLayout>
+<!-- From: file:/C:/android/android_workspace/android/TeacherSpace/app/src/main/res/layout/activity_main.xml -->

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/fragment_view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#eeeeee" />
+
+    <ImageView
+        android:id="@+id/fragment_title_iv_radar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="12dp"
+        android:background="#FFFFFF"
+        android:src="@mipmap/img_zongtiqingkuang" />
+
+    <com.github.mikephil.charting.charts.RadarChart
+        android:id="@+id/general_zhongtiqingkuang_radar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="#FFFFFF"
+        android:layout_gravity="center">
+
+    </com.github.mikephil.charting.charts.RadarChart>
+
+    <net.iclassmate.teacherspace.view.FullListView
+        android:id="@+id/fragment_ListView_radar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#dddddd"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:dividerHeight="1dp" />
+</LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:drawable="@mipmap/tab_tongzhi_select"/>
+    <item android:drawable="@mipmap/tab_tongzhi" />
+</selector><!-- From: file:/C:/android/android_workspace/android/TeacherSpace/app/src/main/res/drawable/main_notice_imge_selector.xml -->

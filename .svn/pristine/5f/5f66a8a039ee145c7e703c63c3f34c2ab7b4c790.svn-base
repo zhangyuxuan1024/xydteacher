@@ -1,0 +1,328 @@
+package net.iclassmate.teacherspace.ui.activity;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.Window;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.umeng.analytics.MobclickAgent;
+
+import net.iclassmate.teacherspace.R;
+import net.iclassmate.teacherspace.adapter.SingleReportFragmentAdapter;
+import net.iclassmate.teacherspace.bean.exam.SingleExamInfos;
+import net.iclassmate.teacherspace.bean.single.Single;
+import net.iclassmate.teacherspace.bean.single.SingleAll;
+import net.iclassmate.teacherspace.constant.Constants;
+import net.iclassmate.teacherspace.ui.fragment.LazyFragment;
+import net.iclassmate.teacherspace.ui.fragment.NoticeFragment;
+import net.iclassmate.teacherspace.ui.fragment.single.SingleAllFragment;
+import net.iclassmate.teacherspace.ui.fragment.single.SingleClassFragment;
+import net.iclassmate.teacherspace.ui.fragment.single.SingleGradeFragment;
+import net.iclassmate.teacherspace.ui.fragment.single.SingleTestFragment;
+import net.iclassmate.teacherspace.utils.DataCallback;
+import net.iclassmate.teacherspace.utils.LoadSingleData;
+import net.iclassmate.teacherspace.utils.NetWorkUtils;
+import net.iclassmate.teacherspace.utils.UIUtils;
+import net.iclassmate.teacherspace.view.TitleBar;
+import net.iclassmate.teacherspace.view.loading.LoadingHelper;
+import net.iclassmate.teacherspace.view.loading.LoadingListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SingleReportActivity extends FragmentActivity implements View.OnClickListener, TitleBar.TitleOnClickListener,
+        ViewPager.OnPageChangeListener, DataCallback, LoadingListener {
+    private List<String> listClass;
+    private ViewPager viewPager;
+    private LinearLayout linearLayout;
+    private HorizontalScrollView horizontalScrollView;
+    private TitleBar titleBar;
+    private List<LazyFragment> fragments;
+    private SingleReportFragmentAdapter adapter;
+    private List<TextView> listTv;
+    private TabLayout tabLayout;
+
+    private int vp_cur;
+    private int tv_cur;
+    private SingleAll singleAll;
+    private SingleExamInfos infos;
+    private int currentindex;
+
+    private LoadingHelper loadingHelper;
+    private boolean isShowLoading;
+    private boolean isNoNetWork;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_single_report);
+
+        Intent intent = getIntent();
+        infos = (SingleExamInfos) intent.getSerializableExtra("singleExamInfos");
+        currentindex = intent.getIntExtra("currentindex", -1);
+
+        initView();
+    }
+
+    private void initView() {
+        listClass = new ArrayList<String>();
+        viewPager = (ViewPager) findViewById(R.id.fragment_single_ViewPager);
+        linearLayout = (LinearLayout) findViewById(R.id.fragment_single_linear);
+        horizontalScrollView = (HorizontalScrollView) findViewById(R.id.fragment_single_hscrollview);
+        tabLayout = (TabLayout) findViewById(R.id.fragment_single_tablayout);
+        titleBar = (TitleBar) findViewById(R.id.fragment_single_title_bar);
+        titleBar.setLeftIcon(R.drawable.fragment_back);
+        titleBar.setTitleClickListener(this);
+        loadingHelper = new LoadingHelper(
+                findViewById(R.id.loading_prompt_relative),
+                findViewById(R.id.loading_empty_prompt_linear));
+
+        viewPager.setOnPageChangeListener(this);
+        listTv = new ArrayList<TextView>();
+        if (!isShowLoading) {
+            loadingHelper.ShowLoading();
+            loadingHelper.SetListener(this);
+            isShowLoading = true;
+        }
+        loadData();
+
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        viewPager.setOffscreenPageLimit(3);
+    }
+
+    private void checkState(boolean flag) {
+        if (!isShowLoading) {
+            loadingHelper.ShowLoading();
+            loadingHelper.SetListener(this);
+            isShowLoading = true;
+        }
+
+        if (!NetWorkUtils.isNetworkAvailable(UIUtils.getContext())) {
+            loadingHelper.ShowError("请检查您的网络链接！");
+            isShowLoading = true;
+            isNoNetWork = true;
+        }
+
+        if (flag && !isNoNetWork) {
+            loadingHelper.ShowError("您所在学校或您所任教学科没有任何考试信息！");
+            isShowLoading = true;
+        }
+    }
+
+    private void loadData() {
+        titleBar.setTitle(infos.getCourseName());
+
+        List<String> classIds = infos.getClassIds();
+        if (classIds != null && classIds.size() > 0) {
+            String str = "";
+            for (int i = 0; i < classIds.size(); i++) {
+                str += classIds.get(i) + ",";
+            }
+            infos.setClassId(str);
+        }
+
+        LoadSingleData loadSingleData = new LoadSingleData(infos.getMeId() + "", infos.getSeId() + "", infos.getSchoolId() + "", infos.getClassId(), infos.getMsgId(), infos.getIsReaded(), this);
+        loadSingleData.execute(Constants.SINGLE_LESSON);
+        setFragment();
+    }
+
+    private void setFragment() {
+        fragments = new ArrayList<LazyFragment>();
+        fragments.add(new SingleAllFragment());
+        fragments.add(new SingleTestFragment());
+        fragments.add(new SingleGradeFragment());
+        fragments.add(new SingleClassFragment());
+        adapter = new SingleReportFragmentAdapter(getSupportFragmentManager(), fragments);
+        viewPager.setAdapter(adapter);
+
+        viewPager.setOffscreenPageLimit(3);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int index = 0;
+        Object object = view.getTag();
+        if (object instanceof Integer) {
+            index = (Integer) object;
+            if (vp_cur == 2) {
+                return;
+            }
+            tv_cur = index;
+            setTextColor(tv_cur, vp_cur);
+        }
+    }
+
+    private void setTextColor(int index, int cur) {
+        if (cur == 0 || cur == 1) {
+            setColor(index, true);
+        } else if (cur == 2) {
+            horizontalScrollView.scrollTo(0, 0);
+            tv_cur = 0;
+            setColor(tv_cur, false);
+        } else if (cur == 3) {
+            if (index == 0 && listTv.size() > 1) {
+                tv_cur = 1;
+            }
+            setColor(tv_cur, true);
+            if (listTv != null && listTv.size() > 0) {
+                listTv.get(0).setTextColor(Color.parseColor("#dddddd"));
+            }
+        }
+        tvChanged(tv_cur);
+    }
+
+    private void setColor(int index, boolean flag) {
+        for (int i = 0; i < listTv.size(); i++) {
+            TextView tv = listTv.get(i);
+            if (i == index) {
+                tv.setTextColor(Color.parseColor("#3abec0"));
+            }
+            if (flag) {
+                if (i != index) {
+                    tv.setTextColor(Color.parseColor("#999999"));
+                }
+            } else {
+                if (i != index) {
+                    tv.setTextColor(Color.parseColor("#dddddd"));
+                }
+            }
+        }
+    }
+
+    @Override
+    public void leftClick() {
+        this.finish();
+    }
+
+    @Override
+    public void rightClick() {
+
+    }
+
+    @Override
+    public void titleClick() {
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        //vp_cur = position;
+        viewPager.getParent().requestDisallowInterceptTouchEvent(true);
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        vp_cur = position;
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        setTextColor(tv_cur, vp_cur);
+    }
+
+    @Override
+    public void sendData(Object object) {
+        if (object != null) {
+            if (object instanceof SingleAll) {
+                if (isShowLoading) {
+                    loadingHelper.HideLoading(View.INVISIBLE);
+                    noticeListUpdate();
+                }
+                singleAll = (SingleAll) object;
+                addTitleTv(singleAll);
+                sendDataTo(singleAll);
+            } else {
+                checkState(true);
+            }
+        } else {
+            checkState(true);
+        }
+    }
+
+    //更新通知界面数据
+    private void noticeListUpdate() {
+        if (currentindex != -1) {
+            Intent it = new Intent(this, MainActivity.class);
+            Bundle v_it = new Bundle();
+
+            v_it.putInt("currentindex", currentindex);
+            v_it.putInt("isReaded", infos.getIsReaded());
+            it.putExtras(v_it);
+            Log.i("setResult", infos.getIsReaded() + "");
+            setResult(NoticeFragment.NOTICE_ACTIVITY_CODE, it);
+        }
+    }
+
+    //Activity给4个Ftagment传递数据
+    private void sendDataTo(SingleAll singleAll) {
+        //Log.i("info", "点击了" + tv_cur + "tv");
+        LazyFragment fragment;
+        for (int i = 0; i < fragments.size(); i++) {
+            fragment = fragments.get(i);
+            fragment.sendDataToFragment(tv_cur, singleAll);
+        }
+    }
+
+    //TextView改变
+    private void tvChanged(int index) {
+        LazyFragment fragment;
+        for (int i = 0; i < fragments.size(); i++) {
+            fragment = fragments.get(i);
+            //fragment.sendDataToFragment(tv_cur, singleAll);
+            fragment.textViewSelectedChanged(index);
+        }
+    }
+
+    private void addTitleTv(SingleAll singleAll) {
+        List<Single> list = singleAll.getList();
+        for (int i = 0; i < list.size(); i++) {
+            listClass.add(list.get(i).getClassName());
+        }
+
+        for (int i = 0; i < listClass.size(); i++) {
+            TextView textView = new TextView(this);
+            textView.setText(listClass.get(i));
+            textView.setTextSize(15);
+            textView.setPadding((int) getResources().getDimension(R.dimen.singe_test_margin_lr), 0, (int) getResources().getDimension(R.dimen.singe_test_margin_lr), 0);
+            textView.setTag(i);
+            textView.setOnClickListener(this);
+            listTv.add(textView);
+            linearLayout.addView(textView);
+        }
+        vp_cur = 0;
+        tv_cur = 0;
+        setTextColor(tv_cur, vp_cur);
+    }
+
+    @Override
+    public void OnRetryClick() {
+
+    }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);       //统计时长
+    }
+
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
+}

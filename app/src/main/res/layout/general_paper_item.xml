@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingLeft="6dp">
+<FrameLayout
+    android:layout_width="185dp"
+    android:layout_height="123dp">
+    <ImageView
+        android:id="@+id/general_paper_item_iv"
+        android:layout_width="185dp"
+        android:layout_height="123dp"
+        android:src="@mipmap/img_shijuan"
+        android:background="@drawable/paper"
+        android:padding="5dp"/>
+    <net.iclassmate.teacherspace.view.MyScoreView
+        android:id="@+id/general_paper_item_scoreView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</FrameLayout>
+    <TextView
+        android:id="@+id/general_paper_item_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="第（1）页"
+        android:gravity="center"
+        android:layout_margin="5dp"/>
+
+</LinearLayout>

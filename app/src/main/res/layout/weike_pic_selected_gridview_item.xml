@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/weike_selected_img_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/weike_selected_img_check"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right|top"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:scaleType="center"
+        android:src="@mipmap/ic_weixuan" />
+
+    <ImageView
+        android:id="@+id/weike_selected_img_check_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="#8000"
+        android:visibility="gone" />
+</FrameLayout>

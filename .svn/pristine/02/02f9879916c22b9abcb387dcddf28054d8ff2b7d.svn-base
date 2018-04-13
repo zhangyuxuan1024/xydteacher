@@ -1,0 +1,19 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    tools:context="net.iclassmate.teacherspace.ui.fragment.ExamFragment">
+
+    <LinearLayout
+        android:id="@+id/fragment_exam_linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" />
+</ScrollView>
+<!-- From: file:/C:/android/android_workspace/android/TeacherSpace/app/src/main/res/layout/fragment_exam.xml -->

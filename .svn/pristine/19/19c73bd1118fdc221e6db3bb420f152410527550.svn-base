@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.iclassmate.teacherspace.ui.activity.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/welcome_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/img_shanping"
+        android:contentDescription="@string/app_name" />
+
+    <TextView
+        android:id="@+id/version_code_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="347dp"
+        android:text="v1.0"
+        android:textSize="14sp"
+        android:textColor="#999999"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:text="@string/company_name2"
+        android:textSize="10sp"
+        android:textColor="#bbbbbb"
+        android:layout_marginBottom="10dp"
+        />
+
+</RelativeLayout>

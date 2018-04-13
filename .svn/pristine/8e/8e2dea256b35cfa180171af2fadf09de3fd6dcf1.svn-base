@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#f3f3f3"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e6e6e6"
+        android:contentDescription="@string/app_name" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_selector">
+
+        <FrameLayout
+            android:id="@+id/info_img_fl"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/info_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/app_name"
+                />
+
+            <ImageView
+                android:id="@+id/unread_img"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="64dip"
+                android:layout_marginTop="12dp"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/ic_dahongdian"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_toEndOf="@+id/info_img_fl"
+            android:layout_toRightOf="@+id/info_img_fl"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/tv_title"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#aaaaaa"
+            />
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:lineSpacingExtra="5dp"
+            android:layout_toEndOf="@+id/info_img_fl"
+            android:layout_toRightOf="@+id/info_img_fl"
+            android:textColor="#888888"
+            />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e6e6e6"
+        android:contentDescription="@string/app_name" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#f3f3f3"
+        android:contentDescription="@string/app_name" />
+
+</LinearLayout>

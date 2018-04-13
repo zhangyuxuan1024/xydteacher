@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.iclassmate.teacherspace">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/xydjs_logo2"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.activity.GuideActivity"
+            android:hardwareAccelerated="false"
+            android:label="@string/title_activity_guide" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.WelcomeActivity"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 石中玉Activity -->
+        <activity
+            android:name=".ui.activity.SingleReportActivity"
+            android:label="@string/title_activity_single_report"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.single.MoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.single.StudentPaperActivity"
+            android:label="@string/title_activity_test_paper"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.single.StudentTestActivity"
+            android:label="@string/title_activity_student_paper"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.single.LeidtActivity"
+            android:label="@string/title_activity_leidt"
+            android:screenOrientation="portrait" />
+        <!-- 石中玉Activity -->
+
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".ui.activity.GeneralActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.GeneralTextActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.GeneralPaperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.LoginSearchSchoolActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ForgetPsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.IntroduceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.dialog.LinkmanDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_dialog" />
+        <activity
+            android:name=".ui.activity.dialog.DialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_dialog" />
+        <activity
+            android:name=".ui.activity.dialog.BoundPhoneDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_dialog" />
+        <activity
+            android:name=".ui.activity.dialog.IfChangePhoneNumber"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_dialog" />
+        <activity
+            android:name=".ui.activity.dialog.UpdateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_dialog" />
+        <activity
+            android:name=".ui.activity.dialog.InputUserCode"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_dialog" />
+        <activity
+            android:name=".ui.activity.weike.WeiKeActivity"
+            android:label="@string/title_activity_wei_ke" />
+        <activity
+            android:name=".ui.activity.weike.PicSelectActivity"
+            android:label="@string/title_activity_pic_select"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.weike.LookPicActivity"
+            android:label="@string/title_activity_look_pic"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.weike.PrepareActivity"
+            android:label="@string/title_activity_prepare"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.weike.WeikeRecorderActivity"
+            android:label="@string/title_activity_weike_recorder"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.activity.weike.WeikePlayActivity"
+            android:label="@string/title_activity_weike_play"
+            android:screenOrientation="landscape" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="572d4ae067e58ee0c00046d9" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID" />
+    </application>
+
+</manifest>

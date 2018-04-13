@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/fragment_view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#eeeeee" />
+
+    <ImageView
+        android:id="@+id/fragment_grade_title_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:background="@color/white"
+        android:scaleType="fitStart" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="12dp"
+        android:background="@color/white"
+        android:gravity="right"
+        android:paddingBottom="10dp"
+        android:paddingRight="30dp"
+        android:paddingTop="10dp">
+
+        <include layout="@layout/fragment_grade_title_rg" />
+    </LinearLayout>
+
+    <net.iclassmate.teacherspace.view.FullListView
+        android:id="@+id/fragment_grade_ListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:background="@color/white"
+        android:divider="#dddddd"
+        android:dividerHeight="1dp" />
+</LinearLayout>

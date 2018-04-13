@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFEEEC"
+    tools:context="net.iclassmate.teacherspace.ui.fragment.NoticeFragment">
+
+
+    <net.iclassmate.teacherspace.view.pullrefreshview.PullToRefreshListView
+        android:id="@+id/my_notice_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null">
+
+    </net.iclassmate.teacherspace.view.pullrefreshview.PullToRefreshListView>
+    <include
+        layout="@layout/loading_prompt_linear"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/loading_empty_prompt_linear"
+        android:visibility="gone" />
+
+
+</FrameLayout>

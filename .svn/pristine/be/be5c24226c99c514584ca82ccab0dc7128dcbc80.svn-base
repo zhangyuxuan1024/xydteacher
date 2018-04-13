@@ -1,0 +1,36 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/all_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:scrollbars="none"
+    tools:context="net.iclassmate.teacherspace.ui.fragment.single.SingleAllFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/fragment_single_all_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:background="#eeeeee"
+            android:descendantFocusability="blocksDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingTop="1dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#eeeeee"/>
+    </LinearLayout>
+</ScrollView>
+

@@ -1,0 +1,25 @@
+#IntelliJ IDEA project files
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Gradle build
+build/
+.gradle/
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# OS auto gen
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.bak
+*.tmp
+*.temp
+*.swp

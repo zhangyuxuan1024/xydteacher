@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="net.iclassmate.teacherspace.ui.activity.SingleReportActivity">
+
+    <net.iclassmate.teacherspace.view.TitleBar
+        android:id="@+id/fragment_single_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <HorizontalScrollView
+                android:id="@+id/fragment_single_hscrollview"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="#f6f6f6"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/fragment_single_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dddddd" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/fragment_single_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/white"
+                android:fillViewport="false"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="fixed"
+                app:tabIndicatorColor="@color/app_color"
+                app:tabSelectedTextColor="#1698ff"
+                app:tabTextAppearance="@style/MyTabLayoutStyle"
+                app:tabTextColor="#777777"
+                app:tabBackground="@color/white"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/fragment_single_ViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/loading_prompt_linear"
+            android:visibility="gone" />
+
+        <include
+            layout="@layout/loading_empty_prompt_linear"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

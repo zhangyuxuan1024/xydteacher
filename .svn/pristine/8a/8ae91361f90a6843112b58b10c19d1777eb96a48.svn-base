@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="47dp">
+
+    <ImageView
+        android:id="@+id/fragment_exam_listview_item_image"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/fragment_exam_listview_item_more"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/fragment_exam_next" />
+
+    <TextView
+        android:id="@+id/fragment_exam_listview_item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/fragment_exam_listview_item_more"
+        android:layout_toRightOf="@id/fragment_exam_listview_item_image"
+        android:textSize="@dimen/fragment_exam_tv"
+        android:textColor="#333333"
+        android:text="全科成绩" />
+</RelativeLayout>

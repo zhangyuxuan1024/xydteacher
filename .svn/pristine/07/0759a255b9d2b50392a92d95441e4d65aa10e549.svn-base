@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/weike_show_item_1_iv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:background="#edf4f9"
+        android:padding="20dp"
+        android:scaleType="center"
+        android:src="@mipmap/ic_xinzeng" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:text="第1页"
+        android:textColor="#608283"
+        android:textSize="13sp"
+        android:visibility="invisible" />
+</LinearLayout>

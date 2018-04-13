@@ -1,0 +1,325 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.iclassmate.teacherspace.ui.fragment.OwnerFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EFEEEC"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/person_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="21dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_touxiang" />
+
+                <TextView
+                    android:id="@+id/change_password_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="16dp"
+                    android:padding="10dp"
+                    android:text="@string/change_password"
+                    android:textColor="@color/app_color"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/person_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/person_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:text="张三"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/person_code_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/person_name_tv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:text="账号：110120119"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/tag_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/person_code_tv"
+                    android:layout_marginBottom="21dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="14dp"
+                    android:orientation="vertical">
+
+
+                    <!--<ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/app_color" />-->
+
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/owner_weike_relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_selector">
+
+                <ImageView
+                    android:id="@+id/rl_weike_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_weike" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/rl_weike_icon"
+                    android:layout_toRightOf="@+id/rl_weike_icon"
+                    android:text="@string/record_weike"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/fragment_exam_next"
+                    android:contentDescription="@string/app_name"
+
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/owner_bound_tele_relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/item_selector">
+
+                    <ImageView
+                        android:id="@+id/rl_bound_tele_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/ic_shoujibangding" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@+id/rl_bound_tele_icon"
+                        android:layout_toRightOf="@+id/rl_bound_tele_icon"
+                        android:text="@string/bound_tele"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_bound_tele"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
+                        android:text="@string/un_bound"
+                        android:textSize="15sp"
+                        android:contentDescription="@string/app_name"
+                        />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dddddd"
+                    android:contentDescription="@string/app_name" />
+
+                <RelativeLayout
+                    android:id="@+id/owner_update_relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/item_selector">
+
+                    <ImageView
+                        android:id="@+id/rl_update_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/ic_gengxin" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@+id/rl_update_icon"
+                        android:layout_toRightOf="@+id/rl_update_icon"
+                        android:text="@string/find_update"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
+                        android:text="@string/now_version"
+                        android:textSize="15sp"
+                        android:contentDescription="@string/app_name"
+                        />
+                    <ImageView
+                        android:id="@+id/update"
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@mipmap/ic_new"
+                        android:visibility="gone"
+                        />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dddddd"
+                    android:contentDescription="@string/app_name" />
+
+                <RelativeLayout
+                    android:id="@+id/owner_about_relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/item_selector">
+
+                    <ImageView
+                        android:id="@+id/rl_about_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/ic_guanyu" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@+id/rl_about_icon"
+                        android:layout_toRightOf="@+id/rl_about_icon"
+                        android:text="@string/about_app"
+                        android:autoLink="web"
+                        android:textSize="15sp" />
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
+                        android:background="@drawable/fragment_exam_next"
+                        android:contentDescription="@string/app_name"
+
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/owner_exit_relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/item_selector">
+
+                <ImageView
+                    android:id="@+id/rl_exit_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_guanyu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/rl_exit_icon"
+                    android:layout_toRightOf="@+id/rl_exit_icon"
+                    android:text="@string/exit"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#EFEEEC"
+                android:contentDescription="@string/app_name" />
+        </LinearLayout>
+
+    </ScrollView>
+
+

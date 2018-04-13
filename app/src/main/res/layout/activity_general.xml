@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2"
+    tools:context="net.iclassmate.teacherspace.ui.activity.GeneralActivity">
+
+    <net.iclassmate.teacherspace.view.TitleBar
+        android:id="@+id/general_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+    </net.iclassmate.teacherspace.view.TitleBar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/general_title">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <HorizontalScrollView
+                android:id="@+id/general_hsv"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+
+                android:background="#EDEDED"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/general_grade_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/general_hsv"
+                android:background="#dddddd" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/general_fragment_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/general_hsv"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:fillViewport="false"
+                app:tabIndicatorColor="@color/app_color"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/app_color"
+                app:tabTextColor="#777777">
+
+            </android.support.design.widget.TabLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/general_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/general_fragment_tablayout">
+
+            </android.support.v4.view.ViewPager>
+        </RelativeLayout>
+
+        <include
+            layout="@layout/loading_prompt_linear"
+            android:visibility="gone" />
+
+        <include
+            layout="@layout/loading_empty_prompt_linear"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,55 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- 标题栏高度 -->
+    <dimen name="title_bar_height">45dp</dimen>
+    <dimen name="fragment_exam_tv">15sp</dimen>
+    <dimen name="fragment_listview_item">60dp</dimen>
+    <dimen name="tab_font_size">14.0sp</dimen>
+    <dimen name="fragment_single_test_circle">120dp</dimen>
+    <dimen name="singe_test_margin_lr">12dp</dimen>
+    <dimen name="singe_test_linear_height">30dp</dimen>
+
+    <dimen name="tv_1">1sp</dimen>
+    <dimen name="tv_2">2sp</dimen>
+    <dimen name="tv_3">3sp</dimen>
+    <dimen name="tv_4">4sp</dimen>
+    <dimen name="tv_5">5sp</dimen>
+    <dimen name="tv_10">10sp</dimen>
+    <dimen name="tv_11">11sp</dimen>
+    <dimen name="tv_12">12sp</dimen>
+    <dimen name="tv_15">15sp</dimen>
+
+    <dimen name="view_2">2dp</dimen>
+    <dimen name="view_3">3dp</dimen>
+    <dimen name="view_4">4dp</dimen>
+    <dimen name="view_5">5dp</dimen>
+    <dimen name="view_6">6dp</dimen>
+    <dimen name="view_7">7dp</dimen>
+    <dimen name="view_8">8dp</dimen>
+    <dimen name="view_10">10dp</dimen>
+    <dimen name="view_11">11dp</dimen>
+    <dimen name="view_12">12dp</dimen>
+    <dimen name="view_15">15dp</dimen>
+    <dimen name="view_16">16dp</dimen>
+    <dimen name="view_17">17dp</dimen>
+    <dimen name="view_18">18dp</dimen>
+    <dimen name="view_19">19dp</dimen>
+    <dimen name="view_20">20dp</dimen>
+    <dimen name="view_21">21dp</dimen>
+    <dimen name="view_24">24dp</dimen>
+    <dimen name="view_26">26dp</dimen>
+    <dimen name="view_28">28dp</dimen>
+    <dimen name="view_30">30dp</dimen>
+    <dimen name="view_31">31dp</dimen>
+    <dimen name="view_32">32dp</dimen>
+    <dimen name="view_34">34dp</dimen>
+    <dimen name="view_35">35dp</dimen>
+    <dimen name="view_36">36dp</dimen>
+    <dimen name="view_38">38dp</dimen>
+    <dimen name="view_40">40dp</dimen>
+    <dimen name="view_43">43dp</dimen>
+    <dimen name="view_84">84dp</dimen>
+    <dimen name="view_135">135dp</dimen>
+</resources>

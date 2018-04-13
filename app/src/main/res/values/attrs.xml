@@ -1,0 +1,68 @@
+<resources>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+    <integer name="loading_anim_time">20</integer>
+
+    <declare-styleable name="ViewPagerIndicator">
+
+        <!-- Style of the circle indicator. -->
+        <attr name="vpiCirclePageIndicatorStyle" format="reference" />
+        <!-- Style of the icon indicator's views. -->
+        <attr name="vpiIconPageIndicatorStyle" format="reference" />
+        <!-- Style of the line indicator. -->
+        <attr name="vpiLinePageIndicatorStyle" format="reference" />
+        <!-- Style of the title indicator. -->
+        <attr name="vpiTitlePageIndicatorStyle" format="reference" />
+        <!-- Style of the tab indicator's tabs. -->
+        <attr name="vpiTabPageIndicatorStyle" format="reference" />
+        <!-- Style of the underline indicator. -->
+        <attr name="vpiUnderlinePageIndicatorStyle" format="reference" />
+    </declare-styleable>
+
+    <attr name="centered" format="boolean" />
+    <attr name="selectedColor" format="color" />
+    <attr name="strokeWidth" format="dimension" />
+    <attr name="unselectedColor" format="color" />
+
+    <declare-styleable name="CirclePageIndicator">
+
+        <!-- Whether or not the indicators should be centered. -->
+        <attr name="centered" />
+        <!-- Color of the filled circle that represents the current page. -->
+        <attr name="fillColor" format="color" />
+        <!-- Color of the filled circles that represents pages. -->
+        <attr name="pageColor" format="color" />
+        <!-- Radius of the circles. This is also the spacing between circles. -->
+        <attr name="radius" format="dimension" />
+        <!-- Whether or not the selected indicator snaps to the circles. -->
+        <attr name="snap" format="boolean" />
+        <!-- Color of the open circles. -->
+        <attr name="strokeColor" format="color" />
+        <!-- Width of the stroke used to draw the circles. -->
+        <attr name="strokeWidth" />
+    </declare-styleable>
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="CircleView">
+        <attr name="radius_circle" format="dimension" />
+        <attr name="strokeWidth_circle" format="dimension" />
+        <attr name="circleColor" format="color" />
+        <attr name="ringColor" format="color" />
+        <attr name="ringColorDefault" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="LineView">
+        <attr name="view_width" format="dimension" />
+    </declare-styleable>
+</resources>

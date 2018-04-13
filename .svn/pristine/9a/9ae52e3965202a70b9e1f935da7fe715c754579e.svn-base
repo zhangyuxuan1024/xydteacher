@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/app_color">
+
+        <TextView
+            android:id="@+id/paper_coursename"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="科目名称"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textSize="15sp"/>
+        <ImageView
+            android:id="@+id/paper_fanhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_fanhui"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"/>
+    </FrameLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/paper_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#eeeeee">
+
+    <View
+        android:id="@+id/fragment_view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#eeeeee" />
+
+    <ImageView
+        android:id="@+id/fragment_title_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:background="@color/white"
+        android:scaleType="fitStart"
+        android:src="@mipmap/img_shitinandu" />
+
+    <net.iclassmate.teacherspace.view.FullListView
+        android:id="@+id/fragment_ListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:background="@color/white"
+        android:divider="#dddddd"
+        android:dividerHeight="1dp" />
+</LinearLayout>

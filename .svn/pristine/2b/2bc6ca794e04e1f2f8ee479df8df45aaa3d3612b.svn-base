@@ -1,0 +1,78 @@
+package net.iclassmate.teacherspace.ui.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.umeng.analytics.MobclickAgent;
+
+import net.iclassmate.teacherspace.BuildConfig;
+import net.iclassmate.teacherspace.R;
+import net.iclassmate.teacherspace.view.TitleBar;
+
+public class IntroduceActivity extends Activity implements TitleBar.TitleOnClickListener {
+
+    private TitleBar titleBar;
+    private TextView mVersion;
+
+    private ImageView imageView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_introduce);
+        initView();
+    }
+
+    private void initView() {
+        titleBar = (TitleBar) findViewById(R.id.title_bar);
+        mVersion= (TextView) findViewById(R.id.describe_tv);
+
+        imageView= (ImageView) findViewById(R.id.logo_icon);
+
+        titleBar.setTitle(getResources().getString(R.string.about_app));
+        titleBar.setLeftIcon(R.mipmap.ic_fanhui);
+        titleBar.setTitleClickListener(this);
+
+        getVersion();
+
+
+    }
+
+
+    private void getVersion() {
+        String versionName = BuildConfig.VERSION_NAME;
+        mVersion.setText("当前版本V"+versionName);
+    }
+
+
+    @Override
+    public void leftClick() {
+        finish();
+
+    }
+
+    @Override
+    public void rightClick() {
+
+    }
+
+    @Override
+    public void titleClick() {
+
+    }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart("IntroduceActivity"); //统计页面(仅有Activity的应用中SDK自动调用，不需要单独写。"SplashScreen"为页面名称，可自定义)
+        MobclickAgent.onResume(this);          //统计时长
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd("IntroduceActivity"); // （仅有Activity的应用中SDK自动调用，不需要单独写）保证 onPageEnd 在onPause 之前调用,因为 onPause 中会保存信息。"SplashScreen"为页面名称，可自定义
+        MobclickAgent.onPause(this);
+    }
+}

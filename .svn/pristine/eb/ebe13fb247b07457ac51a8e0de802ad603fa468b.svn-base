@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">心意答教师</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_splach">SplachActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_guide">GuideActivity</string>
+    <string name="main_title_notice">通知</string>
+    <string name="main_title_exam">考试</string>
+    <string name="main_title_owner">个人</string>
+    <string name="fragment_title_exam">考试</string>
+    <string name="login_button">登录</string>
+    <string name="search_school">选择学校</string>
+    <string name="forget_password">忘记密码？</string>
+    <string name="contact_linkman">请联系本校相关负责人</string>
+    <string name="give_up_call">放弃</string>
+    <string name="call">拨打</string>
+    <string name="change_password">修改密码</string>
+    <string name="about_app">关于心意答</string>
+    <string name="describe_version">当前版本v1.0.0</string>
+    <string name="company">官方网站：</string>
+    <string name="company_web">http://www.iclassmate.net/</string>
+    <string name="copyright">Copyright©2015</string>
+    <string name="company_name">上海心意答融讯电子股份有限公司</string>
+    <string name="company_name2">©上海心意答融讯电子股份有限公司</string>
+    <string name="record_weike">微课录制</string>
+    <string name="bound_tele">绑定手机号</string>
+    <string name="un_bound">未绑定</string>
+    <string name="now_version">当前为最新版本</string>
+    <string name="find_update">检查更新</string>
+    <string name="exit">退出当前账号</string>
+    <string name="selector_school">心意答云分析平台</string>
+    <string name="username">账号/已绑定的手机号</string>
+    <string name="userCode">账号</string>
+    <string name="password">密码</string>
+    <string name="old_password">旧密码:</string>
+    <string name="new_password">新密码:</string>
+    <string name="affirm_new_password">确认新密码:</string>
+    <string name="cancel">取消</string>
+    <string name="ensure">确定</string>
+    <string name="s_loading">正在登录,请稍候...</string>
+    <string name="loading_show_empty">查询无结果！</string>
+    <string name="input_school_name">请输入您要查找的学校名称或首字母</string>
+    <string name="title_activity_single_report">SingleReportActivity</string>
+    <string name="fragment_test_stnd"> ※<![CDATA[难题P≤0.3,中等题0.3<P<0.7,简单题P≥0.7]]></string>
+    <string name="title_activity_circle">CircleActivity</string>
+    <string name="title_activity_more">MoreActivity</string>
+    <string name="title_activity_test_paper">TestPaperActivity</string>
+    <string name="title_activity_student_paper">StudentPaperActivity</string>
+    <string name="title_activity_leidt">LeidtActivity</string>
+
+
+    <string name="pull_to_refresh">下拉可以刷新</string>
+    <string name="release_to_refresh">松开后刷新</string>
+    <string name="refreshing">正在加载中</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="refresh_fail_2">请检查您的网络连接</string>
+    <string name="pullup_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="loading">正在加载...</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+
+    <string name="input_userCode">请输入您的账号</string>
+    <string name="input_phone">输入要绑定的手机号</string>
+    <string name="verification_code">验证码</string>
+    <string name="get_code">获取验证码</string>
+    <string name="bound">绑定</string>
+    <string name="if_change_bound">是否更换已绑定的手机号</string>
+    <string name="title_activity_wei_ke">WeiKeActivity</string>
+    <string name="title_activity_pic_select">PicSelectActivity</string>
+    <string name="title_activity_look_pic">LookPicActivity</string>
+    <string name="title_activity_prepare">PrepareActivity</string>
+    <string name="title_activity_weike_recorder">WeikeRecorderActivity</string>
+
+    <string name="weike_edittext_clear"></string>
+    <string name="title_activity_weike_play">WeikePlayActivity</string>
+</resources>

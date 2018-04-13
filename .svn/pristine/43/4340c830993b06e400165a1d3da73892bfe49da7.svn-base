@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.iclassmate.teacherspace.ui.activity.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/welcome_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/welcome"
+        android:contentDescription="@string/app_name" />
+
+</RelativeLayout>
+<!-- From: file:/C:/android/android_workspace/android/TeacherSpace/app/src/main/res/layout/activity_welcome.xml -->

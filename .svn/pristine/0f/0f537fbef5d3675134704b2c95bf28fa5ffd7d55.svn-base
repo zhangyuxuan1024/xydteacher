@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:background="@drawable/dialog_shape"
+
+    tools:context=".ui.activity.dialog.LinkmanDialogActivity">
+
+
+    <TextView
+        android:id="@+id/linkman_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textColor="#232423"
+        android:text="@string/contact_linkman" />
+    <TextView
+        android:id="@+id/linkman_phone_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linkman_tv"
+        android:autoLink="phone"
+        android:textSize="16sp"
+        android:textColor="@color/app_color"
+        android:text="4008201583" />
+    <LinearLayout
+        android:layout_below="@+id/linkman_phone_tv"
+        android:layout_marginTop="19dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#dddddd" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linkman_phone_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp" >
+
+        <TextView
+            android:id="@+id/dialog_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/give_up_call"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_weight="0"
+            android:background="#dddddd" />
+
+        <TextView
+            android:id="@+id/dialog_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/call"
+            android:textColor="@color/app_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+</RelativeLayout>

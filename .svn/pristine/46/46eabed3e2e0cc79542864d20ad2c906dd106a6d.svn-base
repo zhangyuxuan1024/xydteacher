@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="#ecf5e3"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/fragment_single_grade_state_item_tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:text="C 方法欠佳型"
+        android:textColor="#93c65b"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/fragment_single_grade_state_item_tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="对知识掌握不充分，需要改变学习，提高学习能力"
+        android:textColor="#93c65b"
+        android:textSize="9sp" />
+
+</LinearLayout>

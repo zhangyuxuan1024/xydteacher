@@ -1,0 +1,23 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    tools:context="net.iclassmate.teacherspace.ui.fragment.general.GeneralGradeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/fragment_general_grade_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#f0f0f0"/>
+    </LinearLayout>
+</ScrollView>

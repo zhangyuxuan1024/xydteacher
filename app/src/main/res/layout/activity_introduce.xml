@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="net.iclassmate.teacherspace.ui.activity.IntroduceActivity">
+
+    <net.iclassmate.teacherspace.view.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/title_bar_height">
+
+    </net.iclassmate.teacherspace.view.TitleBar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_bar"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/describe_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo_icon"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:textColor="#666666"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/logo_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="62dp"
+            android:background="@mipmap/logo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo_icon"
+            android:layout_centerHorizontal="true"
+            android:text="WWW.RUILONGKEJI.CN"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_check"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/gray2"/>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_centerVertical="true"
+                    android:text="检查更新"
+                    android:textColor="@color/app_color"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/tv_isnew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="30dp"
+                    android:text="当前版本是最新版本"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"/>
+
+                <ImageView
+                    android:id="@+id/iv_hasnew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="30dp"
+                    android:src="@mipmap/ic_new"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_call"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"
+                    android:text="客服电话"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_call"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/ruilong_phone"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/gray2"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_qq"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/tv_qq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="50dp"
+                    android:text="客服 Q Q"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_qq"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/ruilong_qq"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
